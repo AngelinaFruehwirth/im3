@@ -12,11 +12,6 @@ foreach ($data as $row) {
     ];
 }
 
-
-echo '<pre>';
-print_r($transformed_data);
-echo '</pre>';
-
-
+return $transformed_data; 
 
 

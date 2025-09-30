@@ -6,7 +6,7 @@ require_once '../config.php';
 
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
-    $sql = "INSERT INTO entries (borough, complaint_type, descriptor) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO nyc_api (borough, complaint_type, descriptor) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($sql);
 
     foreach ($data as $row) {
