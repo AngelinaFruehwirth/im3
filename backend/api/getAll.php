@@ -25,7 +25,7 @@ try {
     $result = $stmt->fetchAll();
 
     //daten als json zurückgeben
-    echo json_encode($results);
+    echo json_encode($result);
 
 
 
