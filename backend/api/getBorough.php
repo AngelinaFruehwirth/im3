@@ -13,8 +13,16 @@ try {
 
     $borough = $_GET['borough'];
 
+$borough = $_GET['borough'] ?? '';
+$allowedBoroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
+
+if (!in_array($borough, $allowedBoroughs)) {
+    echo json_encode(['error' => 'Invalid borough']);
+    exit;
+}
+
 //sql statement schreiben
-    $sql = "SELECT * FROM nyc_api WHERE DATE (borough) = :borough";
+    $sql = "SELECT * FROM nyc_api WHERE borough = :borough";
 
     $stmt = $pdo->prepare($sql);
     

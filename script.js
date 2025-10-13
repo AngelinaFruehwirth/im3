@@ -32,3 +32,8 @@ async function getBorough(borough){
 
 }
 
+async function fetchBoroughData(borough) {
+  const response = await fetch(`/api/borough.php?borough=${borough}`);
+  const data = await response.json();
+  console.log(data);
+}
