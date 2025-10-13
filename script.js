@@ -1,40 +1,75 @@
-async function getByDate(date){
-    const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${date}`;
-    try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data); // gibt die Daten der API in der Konsole aus
-    } catch (error) {
-    console.error(error)
-    }
+// Globales Objekt für die Daten nach Borough
+let boroughData = {};
+const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
 
-}
-
+// Referenz zum bestehenden Datepicker
 const datepicker = document.querySelector('#datepicker');
-datepicker.addEventListener('change', function(){
-    const date = datepicker.value;
-    getByDate(date)
-    console.log(date);
+const resultsContainer = document.getElementById('results');
 
+// Event: Datum auswählen
+datepicker.addEventListener('change', () => {
+  const date = datepicker.value;
+  if (date) getByDate(date);
+});
 
-})
-
-
-async function getBorough(borough){
-    const url = `https://im3.angelina-fruehwirth.ch/backend/api/getBorough.php?borough=${borough}`;
-    try {
+// -------------------------
+// Daten vom Backend abrufen
+// -------------------------
+async function getByDate(date) {
+  const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${encodeURIComponent(date)}`;
+  
+  try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(borough); // gibt die Daten der API in der Konsole aus
-    } catch (error) {
-    console.error(error)
-    }
+    console.log('Rohdaten vom Backend:', data);
 
+    filterByBorough(data);
+
+  } catch (error) {
+    console.error('Fehler beim Abrufen:', error);
+  }
 }
 
-async function fetchBoroughData(borough) {
-  const response = await fetch(`/api/borough.php?borough=${borough}`);
-  const data = await response.json();
-  console.log(data);
+// -------------------------
+// Daten nach Borough filtern
+// -------------------------
+function filterByBorough(data) {
+  boroughData = {};
+  boroughs.forEach(b => {
+    // Filter für jeden Borough
+    boroughData[b] = data.filter(item => item.borough === b);
+  });
+
+  console.log('Gefilterte Daten nach Borough:', boroughData);
 }
 
+// -------------------------
+// Optional: Daten im Frontend anzeigen
+// -------------------------
+function displayData(borough) {
+  const data = boroughData[borough] || [];
+  resultsContainer.innerHTML = `<h3>${borough} (${data.length} Einträge)</h3>`;
+
+  if (data.length === 0) {
+    resultsContainer.innerHTML += '<p>Keine Daten gefunden.</p>';
+    return;
+  }
+
+  const list = document.createElement('ul');
+  data.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = JSON.stringify(item);
+    list.appendChild(li);
+  });
+  resultsContainer.appendChild(list);
+}
+
+// -------------------------
+// Event: Borough Buttons
+// -------------------------
+document.querySelectorAll('#boroughButtons button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const borough = btn.dataset.borough;
+    displayData(borough);
+  });
+});
