@@ -37,3 +37,4 @@ async function fetchBoroughData(borough) {
   const data = await response.json();
   console.log(data);
 }
+
