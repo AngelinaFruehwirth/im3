@@ -29,7 +29,6 @@ try {
     //daten als json zurückgeben
     echo json_encode($result);
 
-
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
 }
