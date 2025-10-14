@@ -11,17 +11,6 @@ async function getByDate(date) {
   }
 }
 
-// Datepicker mit Eventlistener damit Datenf für data geladen werden wenn ein  Datum ausgewählt wird
-const date_picker = document.querySelector('#datepicker');
-date_picker.addEventListener('input', async function() {
-    const date = date_picker.value;
-    data = await getByDate(date);
-    console.log('byDate',data);
-
-    updateBoroughStats();
-    updateLineChart();
-    //updateBarChart();
-})
 
 
 // Funktion die anzeigt, wie viele Beschwerden es pro Viertel gibt in Prozent
@@ -117,3 +106,26 @@ function updateLineChart() {
 
 
 //Top 3 Beschwerden 
+function updateTopComplaints() {
+    if (!data?.length) return document.querySelector('#top-complaints').innerText = "Keine Daten für diesen Tag.";
+
+    const counts = {};
+    data.forEach(({complaint_type, descriptor}) => {
+        if (complaint_type && descriptor) counts[`${complaint_type.trim()} | ${descriptor.trim()}`] = (counts[`${complaint_type.trim()} | ${descriptor.trim()}`] || 0) + 1;
+    });
+
+    const top3 = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,3);
+    document.querySelector('#top-complaints').innerHTML = `<ol>${top3.map(([c,n]) => `<li>${c}: ${n} Beschwerden</li>`).join('')}</ol>`;
+}
+
+// Datepicker mit Eventlistener damit Datenf für data geladen werden wenn ein  Datum ausgewählt wird
+const date_picker = document.querySelector('#datepicker');
+date_picker.addEventListener('input', async function() {
+    const date = date_picker.value;
+    data = await getByDate(date);
+    console.log('byDate',data);
+
+    updateBoroughStats();
+    updateLineChart();
+    updateTopComplaints();
+})
