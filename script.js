@@ -24,3 +24,52 @@ async function getByDate(date) {
 const canvas = document.querySelector('#canvas');
 //hier code reinkopieren von leas template
 
+
+console.log('hoi');
+
+const data = [
+    {
+        label: 'Bananen',
+        value: 20
+    },
+    {
+        label: 'Karotten',
+        value: 40
+    },
+    {
+        label: 'Birnen',
+        value: 10
+    }
+];
+
+const labels = data.map(item => {
+    return item.label;
+})
+const numbers = data.map(item => {
+    return item.value;
+})
+
+const canvas = document.querySelector('#canvas');
+const chart = new Chart(canvas, {
+        type: 'bar',
+        data: {
+        labels: labels,
+        datasets: [{
+            label: 'Verfügbarkeiten',
+            data: numbers,
+            borderWidth: 1
+        }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
