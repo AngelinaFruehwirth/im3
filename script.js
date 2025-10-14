@@ -48,7 +48,7 @@ const numbers = data.map(item => {
 
 const canvas = document.querySelector('#canvas');
 const chart = new Chart(canvas, {
-        type: 'bar',
+        type: 'line',
         data: {
         labels: labels,
         datasets: [{
