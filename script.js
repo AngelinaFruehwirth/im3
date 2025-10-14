@@ -7,7 +7,7 @@ const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
 // Daten vom Backend abrufen
 
 async function getByDate(date) {
-  const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${encodeURIComponent(date)}`;
+  const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${date}`;
   
   try {
     const response = await fetch(url);
@@ -20,6 +20,13 @@ async function getByDate(date) {
     console.error('Fehler beim Abrufen:', error);
   }
 }
+
+const date_picker = document.querySelector('#datepicker');
+date_picker.addEventListener('input', async function() {
+    const date = date_picker.value;
+    const byDate = await getByDate(date);
+    console.log('byDate', byDate);
+})
 
 
 console.log('hoi');
@@ -48,7 +55,7 @@ const numbers = data.map(item => {
 
 const canvas = document.querySelector('#canvas');
 const chart = new Chart(canvas, {
-        type: 'bar',
+        type: 'line',
         data: {
         labels: labels,
         datasets: [{
