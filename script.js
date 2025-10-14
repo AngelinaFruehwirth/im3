@@ -21,9 +21,6 @@ async function getByDate(date) {
   }
 }
 
-const canvas = document.querySelector('#canvas');
-//hier code reinkopieren von leas template
-
 
 console.log('hoi');
 
