@@ -21,6 +21,13 @@ async function getByDate(date) {
   }
 }
 
+const date_picker = document.querySelector('#datepicker');
+date_picker.addEventListener('input', async function() {
+    const date = date_picker.value;
+    const byDate = await getByDate(date);
+    console.log('byDate', byDate);
+})
+
 
 console.log('hoi');
 
