@@ -26,16 +26,22 @@
 
   <input type="date" name="datepicker" id="datepicker">
 
- 
+ <body>
+    <canvas id="chart"></canvas>
+    <input type="date" name="datepicker" id="datepicker">
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
 
   <div id="boroughButtons"></div>
 <div id="results"></div>
 
-<button onclick="fetchBoroughData('Manhattan')">Manhattan</button>
-<button onclick="fetchBoroughData('Brooklyn')">Brooklyn</button>
-<button onclick="fetchBoroughData('Queens')">Queens</button>
-<button onclick="fetchBoroughData('Bronx')">Bronx</button>
-<button onclick="fetchBoroughData('Staten Island')">Staten Island</button>
+<button onclick="fetchboroughData('Manhattan')">Manhattan</button>
+<button onclick="fetchboroughData('Brooklyn')">Brooklyn</button>
+<button onclick="fetchboroughData('Queens')">Queens</button>
+<button onclick="fetchboroughData('Bronx')">Bronx</button>
+<button onclick="fetchboroughData('Staten Island')">Staten Island</button>
 
 <script type="module" src="script.js"></script>
 
