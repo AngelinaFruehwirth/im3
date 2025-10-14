@@ -7,7 +7,7 @@ const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
 // Daten vom Backend abrufen
 
 async function getByDate(date) {
-  const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${encodeURIComponent(date)}`;
+  const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${date}`;
   
   try {
     const response = await fetch(url);
