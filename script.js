@@ -4,7 +4,7 @@ const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
 
 
 
-// Daten vom Backend abrufen
+// Daten vom Backend abrufen ->bleibt fix als Container worin die Daten gesammelt werden
 let data = null;
 async function getByDate(date) {
   const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${date}`;
@@ -25,7 +25,7 @@ date_picker.addEventListener('input', async function() {
 })
 
 
-console.log('hoi');
+/*console.log('hoi');
 
 const data_test = [
     {
@@ -72,4 +72,4 @@ const chart = new Chart(canvas, {
                 }
             }
         }
-    });
+    });*/
