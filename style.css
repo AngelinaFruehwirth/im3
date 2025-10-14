@@ -30,11 +30,11 @@ header p {
 
 
 
-* {
+/** {
     margin: 0 0 ;
     padding: 0 0;
     box-sizing: border-box;
-}
+}*/
 
 canvas {
     width: 100%;
