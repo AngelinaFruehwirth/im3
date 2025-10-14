@@ -118,7 +118,7 @@ function updateTopComplaints() {
     document.querySelector('#top-complaints').innerHTML = `<ol>${top3.map(([c,n]) => `<li>${c}: ${n} Beschwerden</li>`).join('')}</ol>`;
 }
 
-// Datepicker mit Eventlistener damit Datenf für data geladen werden wenn ein  Datum ausgewählt wird
+// Datepicker mit Eventlistener damit Daten für data geladen werden wenn ein  Datum ausgewählt wird
 const date_picker = document.querySelector('#datepicker');
 date_picker.addEventListener('input', async function() {
     const date = date_picker.value;
