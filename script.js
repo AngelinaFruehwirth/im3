@@ -5,17 +5,13 @@ const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
 
 
 // Daten vom Backend abrufen
-
+let data = null;
 async function getByDate(date) {
   const url = `https://im3.angelina-fruehwirth.ch/backend/api/getByDate.php?date=${date}`;
-  
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log('Rohdaten vom Backend:', data);
-
-    filterByBorough(data);
-
+    return data;
   } catch (error) {
     console.error('Fehler beim Abrufen:', error);
   }
@@ -24,14 +20,14 @@ async function getByDate(date) {
 const date_picker = document.querySelector('#datepicker');
 date_picker.addEventListener('input', async function() {
     const date = date_picker.value;
-    const byDate = await getByDate(date);
-    console.log('byDate', byDate);
+    data = await getByDate(date);
+    console.log('byDate',data);
 })
 
 
 console.log('hoi');
 
-const data = [
+const data_test = [
     {
         label: 'Bananen',
         value: 20
@@ -46,10 +42,10 @@ const data = [
     }
 ];
 
-const labels = data.map(item => {
+const labels = data_test.map(item => {
     return item.label;
 })
-const numbers = data.map(item => {
+const numbers = data_test.map(item => {
     return item.value;
 })
 
