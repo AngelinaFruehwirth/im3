@@ -11,12 +11,16 @@ async function getByDate(date) {
   }
 }
 
-// Datepicker
+// Datepicker mit Eventlistener damit Datenf für data geladen werden wenn ein  Datum ausgewählt wird
 const date_picker = document.querySelector('#datepicker');
 date_picker.addEventListener('input', async function() {
     const date = date_picker.value;
     data = await getByDate(date);
     console.log('byDate',data);
+
+    updateBoroughStats();
+    updateLineChart();
+    //updateBarChart();
 })
 
 
@@ -52,14 +56,8 @@ function updateBoroughStats() {
     console.log('Prozentwerte:', boroughPercentages);
 }
 
-date_picker.addEventListener('input', async function() {
-    if (data) updateBoroughStats(); 
-});
-
-
 
 // Liniendiagramm
-
 const boroughColors = {
   'MANHATTAN': 'rgba(255, 99, 132, 1)',
   'BROOKLYN': 'rgba(54, 162, 235, 1)',
@@ -74,7 +72,8 @@ function prepareLineChartData() {
   const boroughs = ['MANHATTAN', 'BROOKLYN', 'QUEENS', 'BRONX', 'STATEN ISLAND'];
   const boroughCounts = Object.fromEntries(boroughs.map(b => [b, Array(12).fill(0)]));
 
-//Zeitproblem:
+
+//Zeitproblem von Zeitverschiebung
 data.forEach(item => {
   const b = item.borough?.trim().toUpperCase();
   if (!boroughCounts[b]) return;
@@ -87,15 +86,6 @@ data.forEach(item => {
   boroughCounts[b][i]++;
 });
 
-
-
-
-  /*data.forEach(item => {
-    const b = item.borough?.trim().toUpperCase();
-    const t = new Date(item.timestamp);
-    const i = Math.floor(t.getHours() / 2);
-    if (boroughCounts[b]) boroughCounts[b][i]++;
-  }); */
 
   return {
     labels,
@@ -125,53 +115,5 @@ function updateLineChart() {
   });
 }
 
-date_picker.addEventListener('input', async () => updateLineChart());
 
-/*console.log('hoi');
-
-const data_test = [
-    {
-        label: 'Bananen',
-        value: 20
-    },
-    {
-        label: 'Karotten',
-        value: 40
-    },
-    {
-        label: 'Birnen',
-        value: 10
-    }
-];
-
-const labels = data_test.map(item => {
-    return item.label;
-})
-const numbers = data_test.map(item => {
-    return item.value;
-})
-
-const canvas = document.querySelector('#canvas');
-const chart = new Chart(canvas, {
-        type: 'line',
-        data: {
-        labels: labels,
-        datasets: [{
-            label: 'Verfügbarkeiten',
-            data: numbers,
-            borderWidth: 1
-        }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });*/
+//Top 3 Beschwerden 

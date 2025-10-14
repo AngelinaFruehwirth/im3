@@ -9,6 +9,7 @@ foreach ($data as $row) {
         'borough'        => $row['borough'],
         'complaint_type' => $row['complaint_type'],
         'descriptor'     => $row['descriptor'],
+        'timestamp'     => $row['created_date'],
     ];
 }
 
