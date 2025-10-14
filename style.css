@@ -34,3 +34,9 @@ canvas {
     height: 400px;
     background-color: yellow;
 }
+
+.titelbild {
+  width: 100%;
+  height: auto;
+  display: block;
+}
