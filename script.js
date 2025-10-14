@@ -1,9 +1,3 @@
-// Globales Objekt für die Daten nach Borough
-let boroughData = {};
-const boroughs = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
-
-
-
 // Daten vom Backend abrufen ->bleibt fix als Container worin die Daten gesammelt werden
 let data = null;
 async function getByDate(date) {
@@ -17,12 +11,55 @@ async function getByDate(date) {
   }
 }
 
+// Datepicker
 const date_picker = document.querySelector('#datepicker');
 date_picker.addEventListener('input', async function() {
     const date = date_picker.value;
     data = await getByDate(date);
     console.log('byDate',data);
 })
+
+
+// Funktion die anzeigt, wie viele Beschwerden es pro Viertel gibt in Prozent
+function updateBoroughStats() {
+    if (!data || data.length === 0) {
+        document.querySelector('#borough-stats').innerText = "Keine Daten für diesen Tag.";
+        return;
+    }
+
+    const boroughOrder = ['MANHATTAN','BROOKLYN','QUEENS','BRONX','STATEN ISLAND'];
+    const boroughData = Object.fromEntries(boroughOrder.map(b => [b, 0]));
+
+    data.forEach(item => {
+        const key = item.borough?.trim().toUpperCase();
+        if (key && boroughData[key] !== undefined) boroughData[key]++;
+    });
+
+    const total = Object.values(boroughData).reduce((a,b)=>a+b,0);
+
+    const boroughPercentages = Object.fromEntries(
+        Object.entries(boroughData).map(([b,c]) => [b, total ? ((c/total)*100).toFixed(2) : 0])
+    );
+
+    const html = `
+        <ul>
+            ${boroughOrder.map(b => `<li>${b}: ${boroughPercentages[b]}%</li>`).join('')}
+        </ul>
+    `;
+    document.querySelector('#borough-stats').innerHTML = html;
+
+    console.log('Boroughs:', boroughData);
+    console.log('Prozentwerte:', boroughPercentages);
+}
+
+date_picker.addEventListener('input', async function() {
+    if (data) updateBoroughStats(); 
+});
+
+
+
+// Liniendiagramm
+
 
 
 /*console.log('hoi');
