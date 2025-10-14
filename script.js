@@ -60,7 +60,71 @@ date_picker.addEventListener('input', async function() {
 
 // Liniendiagramm
 
+const boroughColors = {
+  'MANHATTAN': 'rgba(255, 99, 132, 1)',
+  'BROOKLYN': 'rgba(54, 162, 235, 1)',
+  'QUEENS': 'rgba(255, 206, 86, 1)',
+  'BRONX': 'rgba(75, 192, 192, 1)',
+  'STATEN ISLAND': 'rgba(153, 102, 255, 1)'
+};
 
+function prepareLineChartData() {
+  const hours = Array.from({ length: 12 }, (_, i) => i * 2);
+  const labels = hours.map(h => `${h === 0 ? 12 : h > 12 ? h - 12 : h}${h < 12 ? ' AM' : ' PM'}`);
+  const boroughs = ['MANHATTAN', 'BROOKLYN', 'QUEENS', 'BRONX', 'STATEN ISLAND'];
+  const boroughCounts = Object.fromEntries(boroughs.map(b => [b, Array(12).fill(0)]));
+
+data.forEach(item => {
+  const b = item.borough?.trim().toUpperCase();
+  if (!boroughCounts[b]) return;
+
+  const t = new Date(item.timestamp);
+  let hour = t.getUTCHours() - 4; // New York = UTC-4
+  if (hour < 0) hour += 24;       // falls negativ, auf 24h-Skala korrigieren
+
+  const i = Math.floor(hour / 2);
+  boroughCounts[b][i]++;
+});
+
+
+
+
+  /*data.forEach(item => {
+    const b = item.borough?.trim().toUpperCase();
+    const t = new Date(item.timestamp);
+    const i = Math.floor(t.getHours() / 2);
+    if (boroughCounts[b]) boroughCounts[b][i]++;
+  }); */
+
+  return {
+    labels,
+    datasets: boroughs.map(b => ({
+      label: b,
+      data: boroughCounts[b],
+      borderColor: boroughColors[b],
+      fill: false,
+      tension: 0.3
+    }))
+  };
+}
+
+let lineChart;
+function updateLineChart() {
+  const ctx = document.querySelector('#canvas');
+  const chartData = prepareLineChartData();
+
+  if (lineChart) lineChart.destroy();
+  lineChart = new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+    options: {
+      scales: { y: { beginAtZero: true } },
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+}
+
+date_picker.addEventListener('input', async () => updateLineChart());
 
 /*console.log('hoi');
 
