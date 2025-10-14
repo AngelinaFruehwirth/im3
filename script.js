@@ -74,6 +74,7 @@ function prepareLineChartData() {
   const boroughs = ['MANHATTAN', 'BROOKLYN', 'QUEENS', 'BRONX', 'STATEN ISLAND'];
   const boroughCounts = Object.fromEntries(boroughs.map(b => [b, Array(12).fill(0)]));
 
+//Zeitproblem:
 data.forEach(item => {
   const b = item.borough?.trim().toUpperCase();
   if (!boroughCounts[b]) return;
