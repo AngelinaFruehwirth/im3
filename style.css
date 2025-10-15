@@ -29,16 +29,29 @@ header p {
 }
 
 
-canvas {
-    width: 100%;
-    height: auto;
-    background-color: lightgrey;
+canvas { 
+  width: 50%; 
+  height: auto; 
+  background-color: lightgrey; 
+  justify-content: center; 
+  align-items: center; 
+  display: flex; 
+  margin: auto 0; 
 }
 
 .titelbild {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.top-drei_container {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;        
 }
 
 .top-drei {
