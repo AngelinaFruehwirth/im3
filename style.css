@@ -30,8 +30,7 @@ header p {
 
 
 canvas { 
-  width: 50%; 
-  height: auto; 
+  width: 50%;  
   background-color: lightgrey; 
   justify-content: center; 
   align-items: center; 
