@@ -38,10 +38,26 @@ canvas {
   margin: auto 0; 
 }
 
+.hero {
+  padding: 0 40px;
+}
+
 .titelbild {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 4px; /* optional, looks nice */
+}
+
+.intro-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  max-width: 900px;
+  margin: 60px auto 40px auto;   /* top + bottom spacing */
+  padding: 0 24px;               /* left & right breathing room */
+  text-align: center;
+  line-height: 1.6;
+  color: #333;
 }
 
 .top-drei_container {
@@ -58,3 +74,67 @@ canvas {
   height: auto;
   display: block;
 }
+
+
+
+/*new
+
+/* Your protected, padded layout container */
+.container {
+  max-width: 1200px; /* optional: keeps content comfortable */
+  margin: 0 auto;
+  padding: 40px 20px; /* ← your new spacing */
+}
+
+/* Top 3 podium container */
+#top3-podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  margin: 40px 0;
+  text-align: center;
+}
+
+/* Podium bars */
+.podium {
+  width: 120px;
+  color: white;
+  border-radius: 6px 6px 0 0;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+/* Heights + colors */
+.first {
+  height: 160px;
+  background: #b14e24;
+}
+
+.second {
+  height: 120px;
+  background: #e38b17;
+}
+
+.third {
+  height: 90px;
+  background: #f1b732;
+}
+
+footer {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+}
+
+.footer-skyline {
+    width: 100%;
+}
+
+.footer-skyline img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+

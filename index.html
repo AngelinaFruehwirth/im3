@@ -5,43 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
+  
   <link rel="stylesheet" href="style.css">
-
-   <!-- <div>
-      <h1>NEW YORK</h1>
-      <p>The City of Complaints</p>
-    </div> -->
-    <img src="bilder/titelbild_nyc_3.jpg" alt="titelbild" class="titelbild">
 
 </head>
 
 <body>
 
-
-<input type="date" name="datepicker" id="datepicker"> 
-
-<div id="borough-stats"></div>
-<div> <canvas id="canvas"></canvas> </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<div id="top-complaints"></div>
-
-
- <!-- <h1>hoi chart.js</h1>
-
-    <canvas id="canvas"></canvas>
-
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="script.js"></script> -->
-
-<div class="top-drei_container">
-  <img src="bilder/top-drei_nyc.jpg" alt="top-drei" class="top-drei">
+  <div class="hero">
+  <img src="bilder/titelbild_nyc_3.jpg" alt="titelbild" class="titelbild">
 </div>
 
-<script type="module" src="script.js"></script>
+  <div class="intro-text">
+  From noise disturbances to street hazards, New Yorkers report it all. Our site turns the city’s complaint data into an interactive experience: discover the most reported issues, compare boroughs, and see how the city speaks through its complaints.
+</div>
+
+  <div class="container">
+
+      <input type="date" name="datepicker" id="datepicker"> 
+
+      <div id="borough-stats"></div>
+
+      <div>
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div id="top-complaints"></div>
+
+     <div id="top3-podium">
+  <div class="podium third"></div>
+  <div class="podium first"></div>
+  <div class="podium second"></div>
+</div>
+     
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="script.js"></script>
+
+  <footer>
+    <div class="footer-skyline">
+        <img src="bilder/skyline.jpeg" alt="Skyline">
+    </div>
+</footer>
 
 </body>
+
 </html>

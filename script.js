@@ -104,18 +104,35 @@ function updateLineChart() {
   });
 }
 
-
-//Top 3 Beschwerden 
 function updateTopComplaints() {
-    if (!data?.length) return document.querySelector('#top-complaints').innerText = "Keine Daten für diesen Tag.";
+    const podium = document.querySelector('#top3-podium');
+    if (!data?.length) {
+        podium.style.display = "none";
+        return;
+    }
+
+    podium.style.display = "flex";
 
     const counts = {};
-    data.forEach(({complaint_type, descriptor}) => {
-        if (complaint_type && descriptor) counts[`${complaint_type.trim()} | ${descriptor.trim()}`] = (counts[`${complaint_type.trim()} | ${descriptor.trim()}`] || 0) + 1;
+    data.forEach(item => {
+        const type = item.complaint_type?.trim();
+        const desc = item.descriptor?.trim();
+        if (type && desc) {
+            const key = `${type} | ${desc}`;
+            counts[key] = (counts[key] || 0) + 1;
+        }
     });
 
-    const top3 = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,3);
-    document.querySelector('#top-complaints').innerHTML = `<ol>${top3.map(([c,n]) => `<li>${c}: ${n} Beschwerden</li>`).join('')}</ol>`;
+    const top3 = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
+
+    const order = ["first", "second", "third"];
+
+    top3.forEach(([label, count], i) => {
+        const div = podium.querySelector("." + order[i]);
+        div.innerHTML = `<strong>${count}</strong><br>${label}`;
+    });
 }
 
 // Datepicker mit Eventlistener damit Daten für data geladen werden wenn ein  Datum ausgewählt wird
@@ -129,3 +146,20 @@ date_picker.addEventListener('input', async function() {
     updateLineChart();
     updateTopComplaints();
 })
+
+
+/*//Top 3 Beschwerden 
+function updateTopComplaints() {
+    if (!data?.length) return document.querySelector('#top-complaints').innerText = "Keine Daten für diesen Tag.";
+
+    const counts = {};
+    data.forEach(({complaint_type, descriptor}) => {
+        if (complaint_type && descriptor) counts[`${complaint_type.trim()} | ${descriptor.trim()}`] = (counts[`${complaint_type.trim()} | ${descriptor.trim()}`] || 0) + 1;
+    });
+
+    const top3 = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,3);
+    document.querySelector('#top-complaints').innerHTML = `<ol>${top3.map(([c,n]) => `<li>${c}: ${n} Beschwerden</li>`).join('')}</ol>`;
+}
+*/
+
+
