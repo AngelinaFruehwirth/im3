@@ -1,47 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-
-   <!-- <div>
-      <h1>NEW YORK</h1>
-      <p>The City of Complaints</p>
-    </div> -->
-    <img src="bilder/titelbild_nyc_3.jpg" alt="titelbild" class="titelbild">
-
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
+  <div class="hero">
+    <img src="bilder/titelbild_nyc_3.jpg" alt="titelbild" class="titelbild">
+  </div>
 
-<input type="date" name="datepicker" id="datepicker"> 
+  <div class="intro-text">
+    From noise disturbances to street hazards, New Yorkers report it all. Select a date to explore when, where and why complaints occurred across the city. Our site turns the city’s complaint data into an interactive experience - discover how the city speaks through its complaints.
+  </div>
 
-<div id="borough-stats"></div>
-<div> <canvas id="canvas"></canvas> </div>
+  <div class="container">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <input type="date" name="datepicker" id="datepicker">
 
-<div id="top-complaints"></div>
+    <div id="borough-stats"></div>
 
+    <div class="map-container">
+      <svg id="nyc-map"
+           viewBox="0 0 500 560"
+           xmlns="http://www.w3.org/2000/svg"
+           role="img"
+           aria-label="NYC borough complaint distribution map">
 
- <!-- <h1>hoi chart.js</h1>
+        <!-- borough shapes -->
+        <polygon id="BRONX" class="borough" points="165,35 260,35 280,85 190,105"></polygon>
+        <polygon id="MANHATTAN" class="borough" points="195,110 245,110 265,220 230,245 185,220"></polygon>
+        <polygon id="QUEENS" class="borough" points="305,150 395,150 420,290 320,310"></polygon>
+        <polygon id="BROOKLYN" class="borough" points="200,270 300,270 325,395 235,415 175,350"></polygon>
+        <polygon id="STATEN_ISLAND" class="borough" points="95,360 175,360 195,445 115,445"></polygon>
 
-    <canvas id="canvas"></canvas>
+        <!-- percentages -->
+        <text id="BRONX-text" x="225" y="75" class="borough-text">0%</text>
+        <text id="MANHATTAN-text" x="225" y="180" class="borough-text">0%</text>
+        <text id="QUEENS-text" x="360" y="235" class="borough-text">0%</text>
+        <text id="BROOKLYN-text" x="240" y="330" class="borough-text">0%</text>
+        <text id="STATEN_ISLAND-text" x="145" y="405" class="borough-text">0%</text>
+      </svg>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="script.js"></script> -->
+    <!-- SECOND INTRO TEXT (same size & style as top intro) -->
+    <div class="intro-text intro-text--secondary">
+      And have you ever wondered what New Yorkers actually complain about?
+      This graphic shows the top three complaint types for the selected day.
+      In the city that never sleeps, noise complaints are just as much a part of daily life as yellow taxis or the Statue of Liberty.
+    </div>
 
-<div class="top-drei_container">
-  <img src="bilder/top-drei_nyc.jpg" alt="top-drei" class="top-drei">
+    <div id="top3-podium">
+      <div class="podium third"></div>
+      <div class="podium first"></div>
+      <div class="podium second"></div>
+    </div>
+
+    <div class="intro-text intro-text--footer">
+      Complaints or not, New York remains a truly special place.
+      Between noise, movement and everyday chaos, the city reveals its character — and invites you to become part of it.
 </div>
 
-<script type="module" src="script.js"></script>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="script.js"></script>
+
+  <footer>
+    <div class="footer-skyline">
+      <img src="bilder/skyline.jpeg" alt="Skyline">
+    </div>
+  </footer>
 
 </body>
 </html>

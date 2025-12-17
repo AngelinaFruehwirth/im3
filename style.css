@@ -1,60 +1,184 @@
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #fff;
+body{
+  margin:0;
+  font-family:'Montserrat',sans-serif;
+  background:#fff;
 }
 
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  position: relative;
-  text-align: center;
+.hero{padding:0 40px;}
+
+.titelbild{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:4px;
 }
 
-header h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  font-weight: 400;
-  margin: 0;
-  letter-spacing: 1px;
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:40px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
 }
 
-header p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
-  margin: 5px 0 0;
-  color: #555;
+.intro-text{
+  font-size:1.2rem;
+  max-width:900px;
+  margin:60px auto 40px;
+  padding:0 24px;
+  text-align:center;
+  line-height:1.6;
+  color:#333;
 }
 
-
-canvas { 
-  width: 50%;  
-  background-color: lightgrey; 
-  justify-content: center; 
-  align-items: center; 
-  display: flex; 
-  margin: auto 0; 
+.intro-text--secondary{
+  margin:10px auto 10px;
 }
 
-.titelbild {
-  width: 100%;
-  height: auto;
-  display: block;
+#datepicker{
+  display:block;
+  margin:0 auto 8px;
+  padding:10px 14px;
+  font-size:1rem;
+  border:1px solid #ddd;
+  border-radius:8px;
+  background:#fff;
 }
 
-.top-drei_container {
-  width: 50%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;        
+#borough-stats{
+  margin:0;
+  padding-top:14px;
 }
 
-.top-drei {
-  width: 100%;
-  height: auto;
-  display: block;
+.legend{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:16px 22px;
+  font-weight:500;
+}
+
+.legend span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:999px;
+  display:inline-block;
+}
+
+.dot.manhattan{background:#b14e24;}
+.dot.brooklyn{background:#e38b17;}
+.dot.queens{background:#f1b732;}
+.dot.bronx{background:#c67a50;}
+.dot.staten{background:#f4d67a;}
+
+.map-container{
+  width:100%;
+  max-width:720px;
+  margin:10px auto 0;
+}
+
+#nyc-map{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.borough{
+  cursor:pointer;
+  transform-box:fill-box;
+  transform-origin:center;
+  transition:transform .2s;
+}
+
+.borough:hover{transform:scale(1.05);}
+
+#MANHATTAN{fill:#b14e24;}
+#BROOKLYN{fill:#e38b17;}
+#QUEENS{fill:#f1b732;}
+#BRONX{fill:#c67a50;}
+#STATEN_ISLAND{fill:#f4d67a;}
+
+.borough-text{
+  font-size:16px;
+  font-weight:700;
+  text-anchor:middle;
+  dominant-baseline:middle;
+  fill:#fff;
+  pointer-events:none;
+}
+
+#top3-podium{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:26px;
+  margin:20px 0 10px;
+  text-align:center;
+}
+
+.podium{
+  width:220px;
+  padding:16px;
+  font-size:.95rem;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  box-sizing:border-box;
+  border-radius:10px 10px 0 0;
+  word-break:normal;
+  overflow-wrap:anywhere;
+  line-height:1.25;
+}
+
+.podium .label{max-width:190px;}
+
+.first{height:230px;background:#b14e24;}
+.second{height:175px;background:#e38b17;}
+.third{height:135px;background:#f1b732;}
+
+.intro-text--footer{
+  font-size:1.2rem;
+  max-width:900px;
+  margin:80px auto 60px; /* mehr Abstand zum Podium */
+  padding:0 24px;
+  text-align:center;
+  line-height:1.6;
+  color:#333;
+}
+
+footer{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.footer-skyline img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.legend-item{transition:transform .15s, font-weight .15s; transform-origin:center;}
+.legend-item i.dot{transition:transform .15s;}
+.legend-item.active{transform:scale(1.08); font-weight:700;}
+.legend-item.active i.dot{transform:scale(1.35);}
+
+.podium {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.podium:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
