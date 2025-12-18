@@ -25,29 +25,21 @@
     <div id="borough-stats"></div>
 
     <div class="map-container">
-      <svg id="nyc-map"
-           viewBox="0 0 500 560"
-           xmlns="http://www.w3.org/2000/svg"
-           role="img"
-           aria-label="NYC borough complaint distribution map">
+  <svg
+    id="nyc-map"
+    viewBox="0 0 900 900"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="NYC borough complaint distribution map"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <g id="borough-layer"></g>
 
-        <!-- borough shapes -->
-        <polygon id="BRONX" class="borough" points="165,35 260,35 280,85 190,105"></polygon>
-        <polygon id="MANHATTAN" class="borough" points="195,110 245,110 265,220 230,245 185,220"></polygon>
-        <polygon id="QUEENS" class="borough" points="305,150 395,150 420,290 320,310"></polygon>
-        <polygon id="BROOKLYN" class="borough" points="200,270 300,270 325,395 235,415 175,350"></polygon>
-        <polygon id="STATEN_ISLAND" class="borough" points="95,360 175,360 195,445 115,445"></polygon>
+    <g id="label-layer"></g>
+  </svg>
+</div>
 
-        <!-- percentages -->
-        <text id="BRONX-text" x="225" y="75" class="borough-text">0%</text>
-        <text id="MANHATTAN-text" x="225" y="180" class="borough-text">0%</text>
-        <text id="QUEENS-text" x="360" y="235" class="borough-text">0%</text>
-        <text id="BROOKLYN-text" x="240" y="330" class="borough-text">0%</text>
-        <text id="STATEN_ISLAND-text" x="145" y="405" class="borough-text">0%</text>
-      </svg>
-    </div>
 
-    <!-- SECOND INTRO TEXT (same size & style as top intro) -->
     <div class="intro-text intro-text--secondary">
       And have you ever wondered what New Yorkers actually complain about?
       This graphic shows the top three complaint types for the selected day.
@@ -63,11 +55,10 @@
     <div class="intro-text intro-text--footer">
       Complaints or not, New York remains a truly special place.
       Between noise, movement and everyday chaos, the city reveals its character — and invites you to become part of it.
-</div>
+    </div>
 
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="module" src="script.js"></script>
 
   <footer>

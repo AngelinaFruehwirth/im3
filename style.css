@@ -37,6 +37,16 @@ body{
   margin:10px auto 10px;
 }
 
+.intro-text--footer{
+  font-size:1.2rem;
+  max-width:900px;
+  margin:80px auto 60px;
+  padding:0 24px;
+  text-align:center;
+  line-height:1.6;
+  color:#333;
+}
+
 #datepicker{
   display:block;
   margin:0 auto 8px;
@@ -60,10 +70,15 @@ body{
   font-weight:500;
 }
 
-.legend span{
+.legend-item{
   display:inline-flex;
   align-items:center;
   gap:8px;
+  min-width:130px;
+  justify-content:center;
+  white-space:nowrap;
+  transition:transform .15s, font-weight .15s;
+  transform-origin:center;
 }
 
 .dot{
@@ -73,47 +88,64 @@ body{
   display:inline-block;
 }
 
-.dot.manhattan{background:#b14e24;}
-.dot.brooklyn{background:#e38b17;}
-.dot.queens{background:#f1b732;}
-.dot.bronx{background:#c67a50;}
-.dot.staten{background:#f4d67a;}
+.legend-item i.dot{transition:transform .15s;}
+.legend-item.active{transform:scale(1.08); font-weight:700;}
+.legend-item.active i.dot{transform:scale(1.35);}
+
+.dot.bronx{background:#aa2925;}
+.dot.queens{background:#e49249;}
+.dot.manhattan{background:#edd586;}
+.dot.brooklyn{background:#80a0d4;}
+.dot.staten{background:#697aa2;}
 
 .map-container{
   width:100%;
-  max-width:720px;
-  margin:10px auto 0;
+  max-width:900px;
+  margin:40px auto 0;
 }
 
 #nyc-map{
   width:100%;
   height:auto;
   display:block;
+  overflow:visible;
 }
 
 .borough{
   cursor:pointer;
-  transform-box:fill-box;
-  transform-origin:center;
-  transition:transform .2s;
 }
 
-.borough:hover{transform:scale(1.05);}
+.borough-inner{
+  transition:transform .2s ease;
+  transform-origin:center;
+  transform-box:fill-box;
+  will-change:transform;
+}
 
-#MANHATTAN{fill:#b14e24;}
-#BROOKLYN{fill:#e38b17;}
-#QUEENS{fill:#f1b732;}
-#BRONX{fill:#c67a50;}
-#STATEN_ISLAND{fill:#f4d67a;}
+.borough:hover .borough-inner{
+  transform:scale(1.04);
+}
 
 .borough-text{
-  font-size:16px;
+  font-family:'Montserrat',sans-serif;
+  font-size:18px;
   font-weight:700;
   text-anchor:middle;
   dominant-baseline:middle;
-  fill:#fff;
   pointer-events:none;
+  fill:#fff;
 }
+
+#MANHATTAN-text{fill:#ffffff;}
+
+
+#BRONX{fill:#aa2925;}
+#QUEENS{fill:#e49249;}
+#MANHATTAN{fill:#edd586;}
+#BROOKLYN{fill:#80a0d4;}
+#STATEN_ISLAND{fill:#697aa2;}
+
+.borough-inner *{fill:inherit !important;}
 
 #top3-podium{
   display:flex;
@@ -139,23 +171,34 @@ body{
   word-break:normal;
   overflow-wrap:anywhere;
   line-height:1.25;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.podium:hover{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 12px 24px rgba(0,0,0,0.12);
 }
 
 .podium .label{max-width:190px;}
 
-.first{height:230px;background:#b14e24;}
-.second{height:175px;background:#e38b17;}
-.third{height:135px;background:#f1b732;}
-
-.intro-text--footer{
-  font-size:1.2rem;
-  max-width:900px;
-  margin:80px auto 60px; /* mehr Abstand zum Podium */
-  padding:0 24px;
-  text-align:center;
-  line-height:1.6;
+.first{
+  height:230px;
+  background:#f4b400; 
   color:#333;
 }
+
+.second{
+  height:175px;
+  background:#f6c23e; 
+  color:#333;
+}
+
+.third{
+  height:135px;
+  background:#fde8a7; 
+  color:#333;         
+}
+
 
 footer{
   width:100%;
@@ -167,18 +210,4 @@ footer{
   width:100%;
   height:auto;
   display:block;
-}
-
-.legend-item{transition:transform .15s, font-weight .15s; transform-origin:center;}
-.legend-item i.dot{transition:transform .15s;}
-.legend-item.active{transform:scale(1.08); font-weight:700;}
-.legend-item.active i.dot{transform:scale(1.35);}
-
-.podium {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.podium:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
