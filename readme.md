@@ -8,7 +8,7 @@ DOKUMENATION
                
 
     LEARNINGS
-        Aus dem Projekt haben wir gelernt, dass es wichtiger ist, Daten aussagekräftig zu präsentieren, als möglichst viele Daten darzustellen. Auch wenn das bedeutet, gewisse Informationen wegzulassen, kann dies sinnvoller sein, als irrelevante Daten beizubehalten, die keine klare Aussage liefern.
+        Aus dem Projekt haben wir gelernt, dass es wichtiger ist, Daten aussagekräftig zu präsentieren, als möglichst viele Daten darzustellen. Auch wenn das bedeutet, gewisse Informationen wegzulassen, kann dies sinnvoller sein, als irrelevante Daten beizubehalten, die keine klare Aussage liefern. 
 
 
     SCHWIERIGKEITEN
@@ -17,11 +17,11 @@ DOKUMENATION
 
         Gemeinsam mit Lea haben wir überprüft, ob dies an unserer Datenbank lag, stellten jedoch fest, dass die Ursache bei der API selbst lag. Da diese nur einmal täglich aktualisiert wird, hatten alle Beschwerden praktisch denselben Zeitstempel. Die Zeitangaben waren somit nicht sinnvoll nutzbar. Lea empfahl uns, das Diagramm weiter zu beobachten und es gegebenenfalls zu entfernen. Nach zwei weiteren Wochen ohne Veränderung haben wir uns entschieden, das Diagramm vollständig aus dem Projekt zu streichen – nach dem Prinzip: lieber weglassen als etwas zu zeigen, das keine Aussagekraft hat.
 
-        (Eine weitere Schwierigkeit bestand darin, die gesamte Website responsive umzusetzen. Zu Beginn hatten wir die einzelnen Stadtteile der Karte als separate Bilder eingebunden, um einen coolen Hover-Effekt realisieren zu können. Dies stellte jedoch eine grosse Herausforderung dar, da sich die Elemente zusammen mit den Prozentangaben dynamisch verschieben mussten. Dadurch entstanden zwischen den Stadtteilen Lücken, was wie ein Darstellungsfehler wirkte.
-        Aus diesem Grund haben wir uns gegen den Hover-Effekt entschieden und die Karte schliesslich als eine einzelne Datei eingebunden.)
-        
+       Eine weitere Schwierigkeit bestand darin, die Map so zu gestalten, wie wir sie uns vorgestellt haben. Das Ziel war, dass beim Hovern über die einzelnen Stadteile dieser Teil der Karte etwas grösser wird, um die Userexperience angenehmer und etwas dynamischer zu machen. Also haben wir die einzelnen Viertel der Karte als einzelne SVG's hochgeladen. Allerdings ist es uns nicht gelungen die zum Teil entstandenen Lücken zwischen den einzelnen Kartenteilen zu entfernen. Wir haben uns daher überlegt, die Karte als ein SVG hochzuladen, wodurch aber der Hovereffekt über die einzelnen Viertel fehlen würde und somit unserer Meinung nach auch die Userexperience nicht mehr dieselbe wäre. Also sind wir den Kompromiss eingegangen, dass es zwar eine Lücke zwischen einigen Kartenteilen hat, dafür aber ein wichtiger Hovereffekt beibehalten werden kann.
+
+       Ab dem 17. Dezember und an einigen der darauffolgenden Tagen haben wir eine plötzliche Aufzeichnungslücke in unserem Datepicker festgestellt. Komischerweise wurde aber die API an allen diesen Tagen aktualisiert und auch unsere Datenbank hat diese Daten aufgezeichnet und ausgespielt, weshalb uns der Ursprung des Fehlers nicht klar ist. Leider wurde die API dann ab dem 23.12. gar nicht mehr aktualisiert, weshalb wir stand heute (28.12.) keine aktuellen Daten mehr mit unserem Datepicker anzeigen können. Wir werden die API bis zur Abgabe noch beobachten und hoffen, dass sie bald wieder aktualisiert wird und unser Projekt auch wieder aktuelle Daten anzeigen kann. 
 
 
     BENUTZTE RESSOURCEN
-        Den grössten Teil des Projekts konnten wir im Unterricht umsetzen, was eine grosse Hilfe war. Dadurch konnten wir gemeinsam arbeiten, uns austauschen und direkt Live-Coaching in Anspruch nehmen. Zusätzlich haben wir viel mit AI bzw. ChatGPT gearbeitet. Dabei war es wichtig, sehr klare und präzise Prompts zu formulieren. So haben wir häufig bereits gut funktionierenden Code erhalten, den wir nur noch leicht anpassen mussten.
+        Den grössten Teil des Projekts konnten wir im Unterricht umsetzen, was eine grosse Hilfe war. Dadurch konnten wir gemeinsam arbeiten, uns austauschen und direkt Live-Coaching in Anspruch nehmen. Zusätzlich haben wir viel mit AI bzw. ChatGPT gearbeitet. Dabei war es wichtig, sehr klare und präzise Prompts zu formulieren. So haben wir häufig bereits gut funktionierenden Code erhalten, den wir nur noch leicht anpassen mussten. Zusätzlich haben wir ChatGPT genutzt, um Fehler im Code auszuamchen, wenn etwas nicht funktioniert hat und wir den Fehler selbst nicht gefunden haben. 
 
